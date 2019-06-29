@@ -2,6 +2,8 @@
   <%= link_to 'Marcar presença!', site_path(@event), method: :post, class: 'btn btn-default', style: 'color: white' %>
 <% end %>
 
+<h1 style="color: white">Evento atual: <%= @event.title %></h1>
+
 <section style="padding-top: 2%; padding-bottom: 2%" class="page-section cta">
   <div class="container">
     <div class="row">
