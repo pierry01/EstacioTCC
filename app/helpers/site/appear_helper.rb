@@ -1,0 +1,2 @@
+module Site::AppearHelper
+end

@@ -1,10 +1,12 @@
 <div class="row">
   <% @events.each do |event| %>
-    <div class="card" style="width: 18rem; margin-right: 3em">
-      <div class="card-body">
-        <h5 class="card-title"><%= event.title %></h5>
-        <p class="card-text"><%= event.description %></p>
+    <%= link_to(site_event_path(event)) do %>
+      <div class="card" style="width: 20em; margin-right: 3em; margin-top: 3em">
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p class="card-text"><%= event.description %></p>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
