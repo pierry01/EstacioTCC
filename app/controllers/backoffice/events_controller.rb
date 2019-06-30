@@ -4,7 +4,7 @@ class Backoffice::EventsController < BackofficeController
   def index
     @events = Event.all
   end
-  
+
   def new
     @event = Event.new
   end
@@ -12,7 +12,7 @@ class Backoffice::EventsController < BackofficeController
   def create
     @event = Event.new(params_event)
     if @event.save
-      redirect_to backoffice_admins_path, notice: "Administrador #{@event.email} criada!"
+      redirect_to backoffice_events_path, notice: 'Evento criado!'
     else
       render :new
     end
@@ -22,9 +22,8 @@ class Backoffice::EventsController < BackofficeController
   end
   
   def update
-    if @event.update(params_admin)
-      AdminMailer.update_email(current_admin, @event).deliver_now
-      redirect_to backoffice_admins_path, notice: "Administrador #{@event.email} alterada!"
+    if @event.update(params_event)
+      redirect_to backoffice_events_path, notice: 'Evento atualizado!'
     else
       render :edit
     end
@@ -32,7 +31,7 @@ class Backoffice::EventsController < BackofficeController
   
   def destroy
     if @event.destroy
-      redirect_to backoffice_path, notice: "Evento excluído"
+      redirect_to backoffice_events_path, notice: 'Evento excluído!'
     else
       render :index
     end
@@ -40,6 +39,10 @@ class Backoffice::EventsController < BackofficeController
   
   private
   
+  def params_event
+    params.require(:event).permit(:id, :title, :description, :start, :finish)
+  end
+
   def set_event
     @event = Event.find(params[:id])
   end

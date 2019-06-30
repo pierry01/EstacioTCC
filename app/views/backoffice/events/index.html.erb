@@ -16,7 +16,7 @@
   
   <tbody>
     <% @events.each do |event| %>
-      <tr>
+      <tr data-href="site.com/whatever">
         <th scope="row"><%= event.id %></th>
         <td><%= event.title %></td>
         <td><%= event.description %></td>
