@@ -1,0 +1,46 @@
+<h1 class="page-header"><%= action %> Usuário</h1><hr><br>
+
+<% if @user.errors.any? %>
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="col-lg-6">
+  <%= form_for([:backoffice, @user]) do |f| %>
+    <div class="row">
+      <div class="col-25">
+        <%= f.label 'E-mail: ' %>
+      </div>
+      <div class="col-75">
+        <%= f.text_field :email, class: 'form-control', placeholder: 'E-mail' %>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-25">
+        <%= f.label 'Senha: ' %>
+      </div>
+      <div class="col-75">
+        <%= f.password_field :password, class: 'form-control', placeholder: 'Senha' %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <%= f.label 'Confirme a senha: ' %>
+      </div>
+      <div class="col-75">
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirme a senha' %>
+      </div>
+    </div>
+
+    <br>
+    <%= f.submit 'Salvar', class: 'float-left btn btn-primary' %>
+  <% end %>
+</div>

@@ -1,12 +1,35 @@
-<div class="row">
-  <% @events.each do |event| %>
-    <%= link_to(site_event_path(event)) do %>
-      <div class="card" style="width: 20em; margin-right: 3em; margin-top: 3em">
-        <div class="card-body">
-          <h5 class="card-title"><%= event.title %></h5>
-          <p class="card-text"><%= event.description %></p>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+<h1 style="color: #e0e0e0; border-left: 5px solid #fdcb00; padding-left: 10px"> Principais eventos</h1>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag 'bg', class: 'd-block w-100', size: '300x400', alt: 'First slide' %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag('login-img', class: 'd-block w-100', size: '300x400', alt: 'First slide') %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag('sign_up-img', class: 'd-block w-100', size: '300x400', alt: 'First slide') %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag('ex1', class: 'd-block w-100', size: '300x400', alt: 'First slide') %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag('ex2', class: 'd-block w-100', size: '300x400', alt: 'First slide') %>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>

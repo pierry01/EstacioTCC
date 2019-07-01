@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   
   namespace :backoffice do
     resources :events
+    resources :users
   end
   
   namespace :site do
-    get 'home/index'
+    resources :home, only: :index
     resources :events, only: :show
     resources :comments, only: :create
     post '/events/:id', to: 'appear#update'
+    resources :schedule, only: :index
   end
   
   root to: 'site/home#index'

@@ -22,6 +22,7 @@
     <ul class="navbar-nav ml-auto ml-md-0" style="margin-left: 0">
       <li class="nav-item dropdown no-arrow float-right ">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_admin.email %>
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
         
@@ -47,6 +48,13 @@
         <%= link_to(backoffice_events_path, class:'nav-link') do %>
           <i class="fas fa-list"></i>
           <span>Eventos</span>
+        <% end %>
+      </li>
+      
+      <li class="nav-item">
+        <%= link_to(backoffice_users_path, class:'nav-link') do %>
+          <i class="fas fa-users"></i>
+          <span>Usuários</span>
         <% end %>
       </li>
       
@@ -105,5 +113,6 @@
       </div>
     </div>
   </div>
+  <%= alertify_flash %>
 </body>
 </html>

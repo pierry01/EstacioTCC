@@ -4,6 +4,16 @@
 
 <h1 style="color: white">Evento atual: <%= @event.title %></h1>
 
+<div class="container">
+  <div class="row">
+    <div class="col-xl-9 mx-auto">
+      <div class="cta-inner text-center">
+        <%= image_tag @event.image, size: '300' %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <section style="padding-top: 2%; padding-bottom: 2%" class="page-section cta">
   <div class="container">
     <div class="row">

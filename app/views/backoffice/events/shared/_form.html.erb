@@ -1,4 +1,4 @@
-<h1 class="page-header"><%= action %> Evento</h1><hr><hr><br>
+<h1 class="page-header"><%= action %> Evento</h1><hr><br>
 
 <% if @event.errors.any? %>
   <div class="alert alert-danger alert-dismissable">
@@ -10,6 +10,7 @@
     </ul>
   </div>
 <% end %>
+
 <div class="col-lg-6">
   <%= form_for([:backoffice, @event]) do |f| %>
     <div class="row">
@@ -48,7 +49,16 @@
         <%= f.text_field :finish, class: 'form-control', placeholder: 'Fim' %>
       </div>
     </div>
-    <br><hr>
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    
+    <div class="row">
+      <div class="col-25">
+        <%= f.label 'Imagem: ' %>
+      </div>
+      <div class="col-75">
+        <%= f.file_field :image %>
+      </div>
+    </div><br>
+    
+    <%= f.submit 'Salvar', class: 'float-left btn btn-primary' %>
   <% end %>
 </div>

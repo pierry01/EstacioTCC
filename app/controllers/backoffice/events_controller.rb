@@ -1,8 +1,12 @@
 class Backoffice::EventsController < BackofficeController
-  before_action :set_event, only: [:edit, :update, :destroy]
+  before_action :set_event, only: [:edit, :update, :destroy, :show]
+  before_action :authenticate_admin!
   
   def index
     @events = Event.all
+  end
+  
+  def show
   end
 
   def new
@@ -40,7 +44,7 @@ class Backoffice::EventsController < BackofficeController
   private
   
   def params_event
-    params.require(:event).permit(:id, :title, :description, :start, :finish)
+    params.require(:event).permit(:id, :title, :description, :start, :finish, :image)
   end
 
   def set_event
