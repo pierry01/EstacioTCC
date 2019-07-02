@@ -3,7 +3,7 @@ class Backoffice::EventsController < BackofficeController
   before_action :authenticate_admin!
   
   def index
-    @events = Event.all
+    @events = Event.order(:id).page(params[:page])
   end
   
   def show

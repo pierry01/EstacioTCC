@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'backoffice', to: 'backoffice/dashboard#index'
   
   namespace :backoffice do
+    resources :menus, except: :show
     resources :events
     resources :users
   end
@@ -12,6 +13,12 @@ Rails.application.routes.draw do
     resources :comments, only: :create
     post '/events/:id', to: 'appear#update'
     resources :schedule, only: :index
+    
+    namespace :cafe do
+      resources :home, only: :index
+      resources :comments, only: :create
+      resources :menus, only: :show
+    end
   end
   
   root to: 'site/home#index'

@@ -21,8 +21,8 @@
       <tr>
         <th scope="row"><%= event.id %></th>
         <td><%= event.title %></td>
-        <td><%= event.start %></td>
-        <td><%= event.finish %></td>
+        <td><%= l(event.start, format: '%d/%m/%Y - %H:%M') %></td>
+        <td><%= l(event.finish, format: '%d/%m/%Y - %H:%M') %></td>
         <td>
           <%= link_to backoffice_event_path(event), 
           class: 'btn btn-circle btn-sm' do %>
@@ -45,3 +45,7 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="d-flex justify-content-center">
+  <%= paginate @events %>
+</div>

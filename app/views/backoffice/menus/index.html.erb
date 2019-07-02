@@ -1,0 +1,44 @@
+<h1>Cardápios</h1>
+
+<table class="table table-hover" style="margin-top: 4%" >
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Start</th>
+      <th scope="col">
+        <%= link_to new_backoffice_menu_path, 
+        class: 'btn btn-success btn-circle btn-sm' do %>
+          <i class="fas fa-plus"></i>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @menus.each do |menu| %>
+      <tr>
+        <th scope="row"><%= menu.id %></th>
+        <td><%= menu.title.truncate(30) %></td>
+        <td><%= menu.description.truncate(80) %></td>
+        <td>
+          <%= link_to edit_backoffice_menu_path(menu), 
+          class: 'btn btn-circle btn-sm' do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+          
+          <%= link_to backoffice_menu_path(menu),
+          class: 'btn btn-circle btn-sm', 
+          data: { confirm: ("Deseja excluir #{menu.title}?") },
+          method: :delete do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+  <%= paginate @menus %>
+</div>

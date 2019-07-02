@@ -1,18 +1,22 @@
-<% if user_signed_in? %>
-  <%= link_to 'Marcar presença!', site_path(@event), method: :post, class: 'btn btn-default', style: 'color: white' %>
-<% end %>
+<section style="padding-bottom: 4%">
+  <% if user_signed_in? %>
+    <%= link_to 'Marcar presença!', site_path(@event), method: :post, class: 'btn btn-default', style: 'color: white' %>
+  <% end %>
 
-<h1 style="color: white">Evento atual: <%= @event.title %></h1>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xl-9 mx-auto">
-      <div class="cta-inner text-center">
-        <%= image_tag @event.image, size: '300' %>
+  <h1 style="color: white">Evento atual: <%= @event.title %></h1>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <div class="cta-inner text-center">
+          <%= image_tag @event.image, width: '100%' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<hr style="border-top: 2px dashed #e0e0e0">
 
 <section style="padding-top: 2%; padding-bottom: 2%" class="page-section cta">
   <div class="container">

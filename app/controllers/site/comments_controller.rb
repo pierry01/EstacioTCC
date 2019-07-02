@@ -8,7 +8,7 @@ class Site::CommentsController < SiteController
     if @comment.save
       redirect_to site_event_path(@comment.event_id), notice: 'Comentário adicionado!'
     else
-      redirect_to site_event_path(@comment.event_id), notice: 'Erro ao adicionar comentário...'
+      redirect_to site_event_path(@comment.event_id), alert: 'Erro ao adicionar comentário...'
     end
   end
   

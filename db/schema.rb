@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_01_065947) do
+ActiveRecord::Schema.define(version: 2019_07_01_232909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,11 +50,13 @@ ActiveRecord::Schema.define(version: 2019_07_01_065947) do
 
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "event_id", null: false
+    t.bigint "event_id"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "menu_id"
     t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["menu_id"], name: "index_comments_on_menu_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -74,6 +76,14 @@ ActiveRecord::Schema.define(version: 2019_07_01_065947) do
     t.index ["user_id", "event_id"], name: "index_events_users_on_user_id_and_event_id"
   end
 
+  create_table "menus", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "price", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -88,5 +98,6 @@ ActiveRecord::Schema.define(version: 2019_07_01_065947) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "events"
+  add_foreign_key "comments", "menus"
   add_foreign_key "comments", "users"
 end

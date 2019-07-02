@@ -1,0 +1,16 @@
+<h1 style="color: #e0e0e0; border-left: 5px solid #fdcb00; padding-left: 10px">
+  Lanchonete
+</h1>
+
+<div class="row">
+  <% @menus.each do |menu| %>
+    <%= link_to(site_cafe_menu_path(menu)) do %>
+      <div class="card" style="width: 20em; margin-right: 3em; margin-top: 3em">
+        <div class="card-body">
+          <h5 class="card-title"><%= menu.title %></h5>
+          <p class="card-text"><%= menu.description %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

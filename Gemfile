@@ -15,12 +15,17 @@ gem 'devise-i18n'
 gem 'jquery-rails'
 gem 'alertifyjs-rails'
 gem 'data-confirm-modal'
+gem 'rails-assets-datetimepicker', source: 'https://rails-assets.org'
+gem 'tty-spinner'
+gem 'kaminari'
+gem 'kaminari-i18n'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'better_errors'
 end
 
 group :development do
@@ -28,7 +33,6 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'better_errors'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

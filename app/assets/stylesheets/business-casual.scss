@@ -13,13 +13,17 @@ body {
   background-size: cover;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway';
+}
+
+h4.event-title, .event-description {
+  color: orange;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+}
+
+div.carousel-caption.d-none.d-md-block .h4 {
+  font-size: 30px;
 }
 
 p {

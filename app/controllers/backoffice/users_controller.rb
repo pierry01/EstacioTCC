@@ -3,7 +3,7 @@ class Backoffice::UsersController < BackofficeController
   before_action :authenticate_admin!
   
   def index
-    @users = User.all
+    @users = User.all.page(params[:page])
   end
   
   def show

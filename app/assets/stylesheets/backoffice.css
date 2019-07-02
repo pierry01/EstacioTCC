@@ -4,6 +4,7 @@
  *= require datatables/dataTables.bootstrap4.min
  *= require admin/sb-admin.min
  *= require admin/form_inline
+ *= require datetimepicker
  */
  
  

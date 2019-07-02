@@ -4,10 +4,10 @@ class Site::AppearController < SiteController
 
   def update
     begin
-      unless current_user.events.find(@event)
+      unless current_user.events.find(@event.id)
         @event.users << current_user
       end
-    rescue Exception
+    rescue ActiveRecord::RecordNotFound
       @event.users << current_user
       redirect_to site_event_path(@event), notice: 'Pré cadastrado!'
     end

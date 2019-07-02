@@ -1,0 +1,57 @@
+<section class="page-section">
+  <div class="container">
+    <div class="product-item">
+      <div class="product-item-title d-flex">
+        <div class="bg-faded p-5 d-flex ml-auto rounded">
+          <h2 class="section-heading mb-0">
+            <span class="section-heading-upper"><%= @menu.title %></span>
+          </h2>
+        </div>
+      </div>
+      <%= image_tag @menu.image, class: 'product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0' %>
+      <div class="product-item-description d-flex mr-auto">
+        <div class="bg-faded p-5 rounded">
+          <p class="mb-0"><%= @menu.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr style="border-top: 2px dashed #e0e0e0">
+
+<section style="padding-top: 2%; padding-bottom: 2%" class="page-section cta">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <div class="cta-inner text-center">
+          <h2 class="section-heading mb-5">
+            <span class="section-heading-upper">Deixe seu comentário</span>
+          </h2>
+          
+          <%= form_tag site_cafe_comments_path, style: 'position: relative; margin-top: -30px' do %>
+            <ul class="list-unstyled list-hours mb-5 text-left mx-auto" >
+              <li class="list-unstyled-item list-hours-item d-flex" style="border-bottom: none">
+                <div class="form-group" style="width: 100%">
+                  <%= text_area :comment, :body, class: 'form-control', rows: 4 %>
+                  <%= hidden_field :comment, :menu_id, value: @menu.id %>
+                </div>
+              </li>
+              <%= submit_tag 'Enviar', class: 'btn btn-primary', style: 'margin-top: -10%; width: 100%' %>
+            </ul>
+          <% end %>
+          
+          <% @menu.comments.each do |comment| %>
+            <ul style="position: relative" class="list-unstyled list-hours mb-5 text-left mx-auto">
+              <span class="ml-auto"><b><%= comment.user.email %></b></span>
+              <span class="ml-auto float-right"><%= time_ago_in_words(comment.created_at) %></span>
+              <li class="list-unstyled-item list-hours-item d-flex" style="margin-bottom: -5%">
+                <p><%= comment.body %></p>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
