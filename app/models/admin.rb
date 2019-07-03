@@ -1,6 +1,6 @@
 class Admin < ApplicationRecord
   # Kaminari
-  paginates_per 5
+  paginates_per 6
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

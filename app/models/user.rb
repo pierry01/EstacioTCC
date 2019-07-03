@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # Kaminari
-  paginates_per 5
+  paginates_per 6
 
   has_and_belongs_to_many :events
   

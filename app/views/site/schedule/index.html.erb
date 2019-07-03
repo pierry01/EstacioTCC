@@ -1,14 +1,16 @@
 <h1 style="color: #e0e0e0; border-left: 5px solid #fdcb00; padding-left: 10px"> Agenda</h1>
 
-<div class="row">
-  <% @events.each do |event| %>
-    <%= link_to(site_event_path(event)) do %>
-      <div class="card" style="width: 20em; margin-right: 3em; margin-top: 3em">
-        <div class="card-body">
-          <h5 class="card-title"><%= event.title %></h5>
-          <p class="card-text"><%= event.description %></p>
-        </div>
+<div class="container">
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-sm" style="margin-top: 40px">
+        <%= link_to(site_event_path(event)) do %>
+          <div class="card" style="width: 30rem">
+            <%= image_tag(event.image, class: 'card-img-top', size: '350x350') %>
+            <div class="card-body"><p class="card-text"><%= event.title.truncate(33) %></p></div>
+          </div>
+        <% end %>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>

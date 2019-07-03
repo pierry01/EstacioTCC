@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   # Kaminari
-  paginates_per 5
+  paginates_per 6
   
   # Associations
   has_one_attached :image
