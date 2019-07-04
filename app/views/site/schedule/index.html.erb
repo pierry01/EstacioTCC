@@ -1,25 +1,19 @@
 <h1 style="color: #e0e0e0; border-left: 5px solid #fdcb00; padding-left: 10px"> Agenda</h1>
 
-<div class="container">
-  <div class="row">
-    <% @events.each do |event| %>
-      <div class="col-sm" style="margin-top: 40px">
-        <%= link_to(site_event_path(event)) do %>
-          <div id=<%= "img#{event.id}" %>>
-            <p><%= event.title.truncate(40) %></p>
-          </div>
-          
-          <script>
-            $(document).ready(function(){
-              $("#img<%=event.id%>").on('mouseenter', function(){
-                $('body').css({'background-image':'url(<%= url_for(event.image) %>)', 'transition':'0.2s'})
-              }).on('mouseleave', function(){
-                $('body').css('background-image', "<% image_tag('bg') %>")
-              })
-            })
-          </script>
-        <% end %>
-      </div>
+<% @events.each do |event| %>
+  <div class="row justify-content-center" style="margin-top: 45px">
+    <%= link_to(site_event_path(event), id: "img#{event.id}", class:'name', style: 'color: white') do %>
+      <%= event.title.truncate(40) %>
+      
+      <script>
+        $(document).ready(function(){
+          $("#img<%=event.id%>").on('mouseenter', function(){
+            $('body').css({'background-image':'url(<%= url_for(event.image) %>)', 'transition':'0.3s'})
+          }).on('mouseleave', function(){
+            $('body').css('background-image', "<% image_tag('bg') %>")
+          })
+        })
+      </script>
     <% end %>
   </div>
-</div>
+<% end %>

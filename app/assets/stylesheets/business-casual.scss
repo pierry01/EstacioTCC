@@ -12,6 +12,20 @@ body {
   background-size: cover;
 }
 
+.name{
+  font: 38px/1.2em "Source Sans Pro", sans-serif;
+  font-family: "Interstate-BlackCondItalic", sans-serif;
+  line-height: 0.8em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway';
 }
@@ -79,7 +93,7 @@ p {
 }
 
 #mainNav {
-  background-color: rgba(47, 23, 15, 0.9);
+  background-color: rgba(47, 23, 15, 0.75);
   font-family: 'Raleway';
 }
 
