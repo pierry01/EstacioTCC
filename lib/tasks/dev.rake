@@ -1,10 +1,9 @@
 require 'faker'
+require 'open-uri'
 
 namespace :dev do
   desc 'Configura o ambiente de desenvolvimento'
   task setup: :environment do
-    images_path = Rails.root.join('public', 'system')
-    
     if Rails.env.development?
       show_spinner('Apagando DB...') { %x(rails db:drop) }
       show_spinner('Criando DB...') { %x(rails db:create) }
@@ -18,6 +17,8 @@ namespace :dev do
       show_spinner('Faker: Cadastrando EVENTOS...') { %x(rails dev:generate_events)}
       show_spinner('Faker: Cadastrando CARDÁPIOS...') { %x(rails dev:generate_menus)}
       show_spinner('Faker: Cadastrando COMENTÁRIOS...') { %x(rails dev:generate_comments)}
+      
+      show_spinner('Adicionando IMAGES to EVENTOS/CARDÁPIOS...') { %x(rails dev:generate_images)}
     else
       puts 'Você não está em ambiente de desenvolvimento!'
     end
@@ -93,7 +94,7 @@ namespace :dev do
       Menu.create!( 
         title: Faker::Lorem.sentence,
         description: Faker::Lorem.paragraph,
-        price: Random.rand(8),
+        price: Random.rand(8)
       )
     end
   end
@@ -120,6 +121,19 @@ namespace :dev do
           menu: menu
         )
       end
+    end
+  end
+  
+  #########################################
+  
+  desc 'Add IMAGES to EVENTS & MENUS'
+  task generate_images: :environment do
+    Event.all.each do |event| 
+      event.image.attach(io: open(Faker::Placeholdit.image('800x500', 'jpeg', :random)), filename: 'some-image.jpg')
+    end
+    
+    Menu.all.each do |menu| 
+      menu.image.attach(io: open(Faker::Placeholdit.image('800x500', 'jpeg', :random)), filename: 'some-image.jpg')
     end
   end
   

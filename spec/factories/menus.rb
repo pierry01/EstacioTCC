@@ -1,7 +1,9 @@
+require 'faker'
+
 FactoryBot.define do
   factory :menu do
-    title { "MyString" }
-    description { "MyText" }
-    price { 1 }
+    title { Faker::Lorem.sentence }
+    description { Faker::Lorem.paragraph }
+    price { Faker::Number.decimal(2) }
   end
 end

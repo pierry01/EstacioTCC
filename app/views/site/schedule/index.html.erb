@@ -5,10 +5,19 @@
     <% @events.each do |event| %>
       <div class="col-sm" style="margin-top: 40px">
         <%= link_to(site_event_path(event)) do %>
-          <div class="card" style="width: 30rem">
-            <%= image_tag(event.image, class: 'card-img-top', size: '350x350') %>
-            <div class="card-body"><p class="card-text"><%= event.title.truncate(33) %></p></div>
+          <div id=<%= "img#{event.id}" %>>
+            <p><%= event.title.truncate(40) %></p>
           </div>
+          
+          <script>
+            $(document).ready(function(){
+              $("#img<%=event.id%>").on('mouseenter', function(){
+                $('body').css({'background-image':'url(<%= url_for(event.image) %>)', 'transition':'0.2s'})
+              }).on('mouseleave', function(){
+                $('body').css('background-image', "<% image_tag('bg') %>")
+              })
+            })
+          </script>
         <% end %>
       </div>
     <% end %>
