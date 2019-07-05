@@ -1,6 +1,6 @@
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
+//= require turbolinks
 //= require bootstrap/dist/js/bootstrap.bundle.min
 //= require alertify
 //= require data-confirm-modal

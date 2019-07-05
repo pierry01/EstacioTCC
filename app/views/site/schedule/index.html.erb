@@ -1,10 +1,12 @@
 <h1 style="color: #e0e0e0; border-left: 5px solid #fdcb00; padding-left: 10px"> Agenda</h1>
 
 <% @events.each do |event| %>
-  <div class="row justify-content-center" style="margin-top: 45px">
-    <%= link_to(site_event_path(event), id: "img#{event.id}", class:'name', style: 'color: white') do %>
-      <%= event.title.truncate(40) %>
-      
+  <div class="row justify-content-center" style="margin-top: 50px">
+    <h5 align="justify" style="color: white; position: absolute; margin-top: -25px"><%= l(event.start, format: :short) %></h5>
+    
+    <%= link_to(site_event_path(event), id: "img#{event.id}", style: 'color: white') do %>
+      <p style="margin-top: 10px" class="name"><%= event.title.truncate(40) %></p>
+
       <script>
         $(document).ready(function(){
           $("#img<%=event.id%>").on('mouseenter', function(){
@@ -17,3 +19,4 @@
     <% end %>
   </div>
 <% end %>
+ 

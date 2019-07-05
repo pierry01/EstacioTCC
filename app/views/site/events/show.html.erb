@@ -1,9 +1,24 @@
 <section style="padding-bottom: 4%">
-  <% if user_signed_in? %>
-    <%= link_to 'Marcar presença!', site_path(@event), method: :post, class: 'btn btn-default', style: 'color: white' %>
-  <% end %>
+  
 
-  <h1 style="color: white">Evento atual: <%= @event.title %></h1>
+  <h1 style="color: white">
+    <%= @event.title %>
+
+    <% if (user_signed_in?) %>
+      <% unless @event.users.include?(current_user) %>
+        <%= link_to(site_path(@event), method: :post, class: 'btn btn-success float-right', style: 'color: white') do %>
+          <i class="far fa-check-circle"></i>
+          <span>Marcar presença...</span>
+        <% end %>
+      <% else %>
+        <%= link_to('#', class: 'btn btn-success float-right disabled', style: 'color: white') do %>
+          <i class="far fa-check-circle"></i>
+          <span>Eu vou!</span>
+        <% end %>
+      <% end %>
+    <% end %>
+  </h1>
+  <br>
   
   <div class="container">
     <div class="row">
@@ -53,24 +68,3 @@
     </div>
   </div>
 </section>
-
-<ul>
-  <li style="color: white">
-    <p>Evento atual tem os usuários:</p>
-    <% @event.users.each do |event_users| %>
-      <%= event_users.email %>
-    <% end %>
-  </li>
-</ul>
-
-<% if user_signed_in? %>
-  <li style="color: white">Usuário LOGADO: <%= current_user.email %></li>
-  <ul>
-    <li style="color: white">
-      <p>Usuário atual está cadastrado nos eventos:</p>
-      <% current_user.events.each do |user_events| %>
-        <%= user_events.title %>
-      <% end %>
-    </li>
-  </ul>
-<% end %>

@@ -1,5 +1,5 @@
 class Site::ScheduleController < SiteController
   def index
-    @events = Event.all
+    @events = Event.order(:start)
   end
 end

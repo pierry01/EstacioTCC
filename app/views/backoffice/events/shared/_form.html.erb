@@ -39,7 +39,7 @@
         <%= f.label 'Início:' %>
       </div>
       <div class="col-75">
-        <%= f.text_field :start, class: 'form-control', id: 'datetimepicker1',
+        <%= f.text_field :start, class: 'form-control', id: 'datetimepicker1', 
         value: (l(@event.start, format: '%d/%m/%Y %H:%M') unless @event.start.blank?) %>
       </div>
     </div>

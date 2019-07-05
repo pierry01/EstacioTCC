@@ -80,8 +80,8 @@ namespace :dev do
       Event.create!( 
         title: Faker::Lorem.sentence,
         description: Faker::Lorem.paragraph,
-        start: DateTime.now,
-        finish: DateTime.now + Random.rand(10)
+        start: DateTime.now + Random.rand(1..5),
+        finish: DateTime.now + Random.rand(6..10)
       )
     end
   end
