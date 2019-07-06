@@ -1,9 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
-  
   layout :layout_by_resource
-  
-  protect_from_forgery with: :null_session
   
   private
   
@@ -15,9 +11,5 @@ class ApplicationController < ActionController::Base
     else
       'application'
     end
-  end
-  
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:password_confirmation])
   end
 end

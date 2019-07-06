@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+  # Ratyrate
+  ratyrate_rateable 'quality'
+  
   # Kaminari
   paginates_per 6
   

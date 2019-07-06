@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # Ratyrate
+  ratyrate_rater
+  
   # Kaminari
   paginates_per 6
 

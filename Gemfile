@@ -7,7 +7,6 @@ gem 'rails', '~> 6.0.0.rc1'
 gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5'
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
@@ -19,6 +18,7 @@ gem 'rails-assets-datetimepicker', source: 'https://rails-assets.org'
 gem 'tty-spinner'
 gem 'kaminari'
 gem 'kaminari-i18n'
+gem 'ratyrate'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
