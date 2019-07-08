@@ -15,8 +15,8 @@ class Event < ApplicationRecord
   validates :title, :description, :start, :finish, presence: true
   
   # Scopes
-  scope :random, ->(quantity) { limit(quantity).order("RANDOM()") }
-  
+  scope :random, ->(quantity) { limit(quantity).order(Arel.sql("RANDOM()")) }
+
   private
   
   def start_is_before_finish

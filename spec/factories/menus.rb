@@ -7,3 +7,6 @@ FactoryBot.define do
     price { Faker::Number.decimal(2) }
   end
 end
+
+
+

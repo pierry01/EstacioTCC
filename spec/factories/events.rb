@@ -1,9 +1,10 @@
+require 'faker'
+
 FactoryBot.define do
   factory :event do
-    title { "MyString" }
-    description { "MyText" }
-    user { nil }
-    start { "MyString" }
-    finish { "MyString" }
+    title { Faker::Lorem.sentence }
+    description { Faker::Lorem.paragraph }
+    start { DateTime.now + Random.rand(1..5) }
+    finish { DateTime.now + Random.rand(6..10) }
   end
 end
