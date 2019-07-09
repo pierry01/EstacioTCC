@@ -1,9 +1,9 @@
 class Backoffice::EventsController < BackofficeController
-  before_action :set_event, only: [:edit, :update, :destroy, :show]
   before_action :authenticate_admin!
+  before_action :set_event, only: [:edit, :update, :destroy, :show]
   
   def index
-    @events = Event.order(:id).page(params[:page])
+    @events = Event.order(:id).page params[:page]
   end
   
   def show
@@ -14,7 +14,7 @@ class Backoffice::EventsController < BackofficeController
   end
   
   def create
-    @event = Event.new(params_event)
+    @event = Event.new(event_params)
     if @event.save
       redirect_to backoffice_events_path, notice: 'Evento criado!'
     else
@@ -26,7 +26,7 @@ class Backoffice::EventsController < BackofficeController
   end
   
   def update
-    if @event.update(params_event)
+    if @event.update(event_params)
       redirect_to backoffice_events_path, notice: 'Evento atualizado!'
     else
       render :edit
@@ -43,7 +43,7 @@ class Backoffice::EventsController < BackofficeController
   
   private
   
-  def params_event
+  def event_params
     params.require(:event).permit(:id, :title, :description, :start, :finish, :image)
   end
 

@@ -23,6 +23,11 @@
           class: 'nav-link text-uppercase text-expanded' %>
         </li>
         
+        <li class="nav-item px-lg-4">
+          <%= link_to 'Fale conosco', '#',
+          class: 'nav-link text-uppercase text-expanded' %>
+        </li>
+        
         <% if user_signed_in? %>
           <li class="nav-item px-lg-4">
             <%= link_to 'Sair', destroy_user_session_path,

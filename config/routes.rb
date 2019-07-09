@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   
   namespace :site do
     resources :home, only: :index
+    resources :contact, only: [:create, :new]
     resources :events, only: :show
-    resources :comments, only: :create
+    resources :comments, only: [:create, :destroy]
     post '/events/:id', to: 'appear#update'
     resources :schedule, only: :index
     

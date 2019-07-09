@@ -16,6 +16,7 @@ class Event < ApplicationRecord
   
   # Scopes
   scope :random, ->(quantity) { limit(quantity).order(Arel.sql("RANDOM()")) }
+  scope :with_preloaded_image, -> { preload(image_attachment: :blob) }
 
   private
   

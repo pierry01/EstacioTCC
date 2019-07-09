@@ -1,9 +1,10 @@
 <section style="padding-bottom: 4%">
-  Qualidade: <%= rating_for @event, 'quality' %>
-  
+  <h1 style="color: white">Qualidade: <%= rating_for @event, 'quality' %></h1>
+  <h1><%= social_share_button_tag(@event.title, rel: 'twipsy') %></h1>
+    
   <h1 style="color: white">
     <%= @event.title %>
-
+    
     <% if (user_signed_in?) %>
       <% unless @event.users.include?(current_user) %>
         <%= link_to(site_path(@event), method: :post, class: 'btn btn-info float-right', style: 'color: white') do %>
