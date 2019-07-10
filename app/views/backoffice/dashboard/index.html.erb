@@ -1,2 +1,9 @@
-<h1>Backoffice::Dashboard#index</h1>
-<p>Find me in app/views/backoffice/dashboard/index.html.erb</p>
+<h1>Dashboard</h1><br>
+
+<% @menus.each do |menu| %>
+  <ul>
+    <li>
+      <%= menu.title %>
+    </li>
+  </ul>
+<% end %>

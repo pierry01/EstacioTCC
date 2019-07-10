@@ -11,9 +11,12 @@ class Backoffice::MenusController < BackofficeController
 
   def new
     @menu = Menu.new
+    @menu.items.build
+    @items = Item.all
   end
   
   def create
+    @items = Item.all
     @menu = Menu.new(params_menu)
     if @menu.save
       redirect_to backoffice_menus_path, notice: 'Cardápio criado!'
@@ -44,7 +47,11 @@ class Backoffice::MenusController < BackofficeController
   private
   
   def params_menu
-    params.require(:menu).permit(:id, :title, :description, :price, :image)
+    params.require(:menu).permit(:id, :title, :description, :price, :image,
+      items_attributes: [
+        :title, :quantity
+      ]
+    )
   end
 
   def set_menu

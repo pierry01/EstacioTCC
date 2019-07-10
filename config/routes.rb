@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
   get 'backoffice', to: 'backoffice/dashboard#index'
-  
+
   namespace :backoffice do
     resources :menus, except: :show
     resources :events
     resources :users
+    resources :stock, only: :index
+    resources :items, only: [:new, :create]
   end
   
   namespace :site do

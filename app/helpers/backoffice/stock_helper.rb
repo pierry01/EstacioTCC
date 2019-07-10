@@ -1,0 +1,2 @@
+module Backoffice::StockHelper
+end
