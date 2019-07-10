@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  belongs_to :menu, optional: true
+  has_and_belongs_to_many :menus, optional: true
   
   # Validations
   validates :title, :quantity, presence: true

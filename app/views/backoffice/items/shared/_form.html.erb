@@ -1,0 +1,17 @@
+<h1 class="page-header"><%= action %> ITEM</h1><hr><br>
+
+
+<div class="col-lg-6">
+  <%= form_for([:backoffice, @item]) do |f| %>
+    <div class="row">
+      <div class="col-25">
+        <%= f.label 'Título:' %>
+      </div>
+      <div class="col-75">
+        <%= f.text_field :title, class: 'form-control', placeholder: 'Título' %>
+      </div>
+    </div>
+    
+    <%= f.submit 'Salvar', class: 'float-left btn btn-primary' %><br><br><br>
+  <% end %>
+</div>

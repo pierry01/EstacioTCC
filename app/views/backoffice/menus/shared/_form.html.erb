@@ -40,25 +40,13 @@
       </div>
     </div>
     
+    <div id="items">
       <%= f.fields_for :items do |items_form| %>
-        <div class="row">
-          <div class="col-25">
-            <%= items_form.label 'Item: ' %>
-          </div>
-          <div class="col-75">
-            <%= items_form.collection_select(:title, @items, :title, :title) %>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-25">
-            <%= items_form.label 'Quantidade: ' %>
-          </div>
-          <div class="col-75">
-            <%= items_form.text_field :quantity, class: 'form-control', placeholder: 'Quantidade' %>
-          </div>
-        </div>
+        <%= render partial: 'backoffice/menus/item_fields', locals: { f: items_form } %>
       <% end %>
+      
+      <%= link_to_add_association('[Adicionar ITEM]', f, :items) %>
+    </div>
     
     <div class="row">
       <div class="col-25">
