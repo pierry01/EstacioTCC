@@ -40,12 +40,17 @@
       </div>
     </div>
     
-    <div id="items">
-      <%= f.fields_for :items do |items_form| %>
-        <%= render partial: 'backoffice/menus/item_fields', locals: { f: items_form } %>
-      <% end %>
+    <div class="nested-fields">
+      <div class="row">
+        <div class="col-25">
+          <%= f.label 'Item do Estoque:' %>
+        </div>
+        <div class="col-75">
+          <%= f.collection_select(:title, @items, :title, :title) %>
+        </div>
+      </div>
       
-      <%= link_to_add_association('[Adicionar ITEM]', f, :items) %>
+      <%= link_to_remove_association('Remover', f) %>
     </div>
     
     <div class="row">

@@ -4,8 +4,11 @@ require 'open-uri'
 namespace :dev do
   desc 'Configura o ambiente de desenvolvimento'
   task setup: :environment do
+    storage_path = Rails.root.join('storage')
+    
     if Rails.env.development?
       show_spinner('Apagando DB...') { %x(rails db:drop) }
+      show_spinner('Apagando storage...') { %x(rm -rf #{storage_path})}
       show_spinner('Criando DB...') { %x(rails db:create) }
       show_spinner('Migrando DB...') { %x(rails db:migrate) }
       
@@ -15,6 +18,7 @@ namespace :dev do
       show_spinner('Faker: Cadastrando USERS...') { %x(rails dev:generate_users)}
       
       show_spinner('Faker: Cadastrando EVENTOS...') { %x(rails dev:generate_events)}
+      show_spinner('Faker: Cadastrando EVENTOS PASSADOS...') { %x(rails dev:generate_past_events)}
       show_spinner('Faker: Cadastrando CARDÁPIOS...') { %x(rails dev:generate_menus)}
       show_spinner('Faker: Cadastrando COMENTÁRIOS...') { %x(rails dev:generate_comments)}
       
@@ -87,6 +91,20 @@ namespace :dev do
   end
   
   #########################################
+    
+  desc 'Faker: Cria EVENTOS PASSADOS'
+  task generate_past_events: :environment do
+    5.times do
+      Event.create!( 
+        title: Faker::Lorem.sentence,
+        description: Faker::Lorem.paragraph,
+        start: DateTime.now - Random.rand(6..10),
+        finish: DateTime.now - Random.rand(1..5)
+      )
+    end
+  end
+  
+  #########################################
   
   desc 'Faker: Cria CARDÁPIOS'
   task generate_menus: :environment do
@@ -104,7 +122,7 @@ namespace :dev do
   desc 'Faker: Cria COMENTÁRIOS'
   task generate_comments: :environment do
     Event.all.each do |event|
-      (Random.rand(5)).times do
+      (Random.rand(10)).times do
         Comment.create!(
           body: Faker::Lorem.paragraph,
           user: User.all.sample,
@@ -114,7 +132,7 @@ namespace :dev do
     end
     
     Menu.all.each do |menu|
-      (Random.rand(5)).times do
+      (Random.rand(10)).times do
         Comment.create!(
           body: Faker::Lorem.paragraph,
           user: User.all.sample,

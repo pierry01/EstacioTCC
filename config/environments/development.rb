@@ -1,4 +1,15 @@
 Rails.application.configure do
+  # MailTrap
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => 'd7da7afdf2ac7b',
+    :password => '4651d6b7eee968',
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
+
   # Active Storage
   config.active_storage.service = :local
   

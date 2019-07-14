@@ -12,6 +12,15 @@
       </div>
     </div>
     
+    <div class="row">
+      <div class="col-25">
+        <%= f.label 'Quantidade:' %>
+      </div>
+      <div class="col-75">
+        <%= f.text_field :quantity, class: 'form-control', placeholder: 'Quantidade' %>
+      </div>
+    </div>
+    
     <%= f.submit 'Salvar', class: 'float-left btn btn-primary' %><br><br><br>
   <% end %>
 </div>

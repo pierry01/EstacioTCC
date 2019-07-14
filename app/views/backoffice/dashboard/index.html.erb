@@ -1,9 +1,22 @@
 <h1>Dashboard</h1><br>
 
+<h1>CARDÁPIOS</h1>
 <% @menus.each do |menu| %>
   <ul>
     <li>
       <%= menu.title %>
+    </li>
+  </ul>
+<% end %>
+
+<hr>
+
+<h1>ESTOQUE</h1>
+<% @items.each do |item| %>
+  <ul>
+    <li>
+      <%= item.title %> +
+      <%= item.quantity %>
     </li>
   </ul>
 <% end %>

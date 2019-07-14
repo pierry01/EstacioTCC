@@ -1,9 +1,9 @@
 <h1 style="color: #e0e0e0; border-left: 5px solid #fdcb00; padding-left: 10px">
-  Agenda
+  Eventos passados
 </h1>
 
 <% @events.each do |event| %>
-  <% if event.start > DateTime.now %>
+  <% if event.start <= DateTime.now %>
     <div class="row justify-content-center" style="margin-top: 50px">
       <h5 align="justify" style="color: white; position: absolute; margin-top: -25px"><%= l(event.start, format: :short) %></h5>
       

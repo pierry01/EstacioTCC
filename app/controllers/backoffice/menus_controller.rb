@@ -48,7 +48,7 @@ class Backoffice::MenusController < BackofficeController
   def params_menu
     params.require(:menu).permit(:id, :title, :description, :price, :image,
       items_attributes: [
-        :title, :quantity, :_destroy
+        :id, :title, :quantity, :_destroy
       ]
     )
   end
