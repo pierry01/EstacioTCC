@@ -1,38 +1,33 @@
 <section style="padding-bottom: 4%">
-  <h1 style="color: white">Qualidade: <%= rating_for @event, 'quality' %></h1>
   <h1><%= social_share_button_tag(@event.title, rel: 'twipsy') %></h1>
-    
-  <h1 style="color: white">
-    <%= @event.title %>
-    
-    <% if (user_signed_in?) %>
-      <% unless @event.users.include?(current_user) %>
-        <%= link_to(site_path(@event), method: :post, class: 'btn btn-info float-right', style: 'color: white') do %>
-          <i class="far fa-check-circle"></i>
-          <span>Marcar presença...</span>
-        <% end %>
-      <% else %>
-        <%= link_to('#', class: 'btn btn-success float-right disabled', style: 'color: white') do %>
-          <i class="far fa-check-circle"></i>
-          <span>Eu vou!</span>
-        <% end %>
-      <% end %>
-    <% end %>
-  </h1>
+
+  
   <br>
   
   <div class="container">
     <div class="row">
-      <div class="col-xl-9 mx-auto">
-        <div class="cta-inner text-center">
-          <%= image_tag @event.image, width: '100%' %>
-        </div>
-      </div>
+      <h3 style="color: white">
+        <%= @event.title %>
+      </h3>
+  
+      <% if (user_signed_in?) %>
+        <% unless @event.users.include?(current_user) %>
+          <%= link_to(site_path(@event), method: :post, class: 'btn btn-info float-right', style: 'color: white') do %>
+            <i class="far fa-check-circle"></i>
+            <span>Marcar presença...</span>
+          <% end %>
+        <% else %>
+          <%= link_to('#', class: 'btn btn-success float-right disabled', style: 'color: white') do %>
+            <i class="far fa-check-circle"></i>
+            <span>Eu vou!</span>
+          <% end %>
+        <% end %>
+      <% end %>
+      
+      <%= image_tag @event.image, width: '100%' %>
     </div>
   </div>
 </section>
-
-<hr style="border-top: 2px dashed #e0e0e0">
 
 <section style="padding-top: 2%; padding-bottom: 2%" class="page-section cta">
   <div class="container">
@@ -40,6 +35,12 @@
       <div class="col-xl-9 mx-auto">
         <div class="cta-inner text-center">
           <h2 class="section-heading mb-5">
+            <div style="position: relative">
+              <%= rating_for @event, 'quality', size: '30px' %>
+            </div>
+            
+            <br>
+            
             <span class="section-heading-upper">Deixe seu comentário</span>
           </h2>
           

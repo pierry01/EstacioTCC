@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   namespace :site do
     resources :home, only: :index
-    resources :contact_us, only: [:create, :new]
+    resources :contact_us, only: :create
     resources :events, only: [:show, :index]
     resources :comments, only: [:create, :destroy]
     post '/events/:id', to: 'appear#update'
