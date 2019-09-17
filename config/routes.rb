@@ -6,8 +6,7 @@ Rails.application.routes.draw do
     resources :menus, except: :show
     resources :events
     resources :users
-    resources :stock, only: :index
-    resources :items, only: [:new, :create]
+    resources :items
   end
   
   namespace :site do

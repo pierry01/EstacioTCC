@@ -12,7 +12,7 @@
         <% if user_signed_in? %>
           <%= form_for :contact_us, url: site_contact_us_path do |form| %>
             <%= form.text_area :user_message, 
-            placeholder: 'Faça login para enviar o e-mail...',
+            placeholder: 'E-mail...',
             style: 'width: 100%', rows: 5 %>
   
             <div class="modal-footer">

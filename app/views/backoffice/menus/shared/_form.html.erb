@@ -40,19 +40,6 @@
       </div>
     </div>
     
-    <div class="nested-fields">
-      <div class="row">
-        <div class="col-25">
-          <%= f.label 'Item do Estoque:' %>
-        </div>
-        <div class="col-75">
-          <%= f.collection_select(:title, @items, :title, :title) %>
-        </div>
-      </div>
-      
-      <%= link_to_remove_association('Remover', f) %>
-    </div>
-    
     <div class="row">
       <div class="col-25">
         <%= f.label 'Imagem: ' %>

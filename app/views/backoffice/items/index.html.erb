@@ -1,0 +1,44 @@
+<h1>Estoque</h1>
+
+<table class="table table-hover" style="margin-top: 4%" >
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">
+        <%= link_to new_backoffice_item_path, 
+        class: 'btn btn-success btn-circle btn-sm' do %>
+          <i class="fas fa-plus"></i>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <th scope="row"><%= item.id %></th>
+        <td><%= item.title.truncate(30) %></td>
+        <td><%= item.quantity %></td>
+        <td>
+          <%= link_to edit_backoffice_item_path(item), 
+          class: 'btn btn-circle btn-sm' do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+          
+          <%= link_to backoffice_item_path(item),
+          class: 'btn btn-circle btn-sm', 
+          data: { confirm: ("Deseja excluir #{item.title}?") },
+          method: :delete do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+  <%= paginate @items %>
+</div>

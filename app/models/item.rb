@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
-  has_and_belongs_to_many :menus, optional: true
+  # Kaminari
+  paginates_per 6
   
   # Validations
   validates :title, :quantity, presence: true
